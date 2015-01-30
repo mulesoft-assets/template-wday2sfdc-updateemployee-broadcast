@@ -6,7 +6,7 @@
       xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
       xmlns:spring="http://www.springframework.org/schema/beans"
-      version="EE-3.5.1"
+      version="EE-3.5.2"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
@@ -43,10 +43,10 @@ http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schem
 }
 ]]></expression-component>
 				<batch:commit size="200" doc:name="Batch Commit">
-                    <sfdc:upsert config-ref="Salesforce" externalIdFieldName="Id" type="User" doc:name="upsert Users in Salesforce">
+                    <sfdc:update config-ref="Salesforce" type="User" doc:name="update Users in Salesforce">
                         <sfdc:objects ref="#[payload]"/>
-                    </sfdc:upsert>
-                    <logger message="Users upsert result: #[payload]" level="INFO" doc:name="Logger 'users upsert result'"/>
+                    </sfdc:update>
+                    <logger message="Users update result: #[payload]" level="INFO" doc:name="Logger 'users update result'"/>
 				</batch:commit>
 			</batch:step>
 		</batch:process-records>

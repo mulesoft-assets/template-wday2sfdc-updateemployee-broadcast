@@ -1,5 +1,5 @@
 
-# Anypoint Template: Workday to Salesforce Update Worker Broadcast
+# Anypoint Template: Workday to Salesforce Update Employee Broadcast
 
 + [License Agreement](#licenseagreement)
 + [Use Case](#usecase)
@@ -26,16 +26,24 @@ Note that using this template is subject to the conditions of this [License Agre
 Please review the terms of the license before downloading and using this template. In short, you are allowed to use the template for free with Mule ESB Enterprise Edition, CloudHub, or as a trial in Anypoint Studio.
 
 # Use Case <a name="usecase"/>
-I want to syncronize Employees between Workday and Salesfoce.
+This Anypoint Template should serve as a foundation for setting an online sync of Employees updates from Workday to Salesforce Users.
+
+Every time there is a change in an already existing Employee in Workday, the integration will poll for them in the source instance and it will be responsible for updating the User in Salesforce.
+
+Requirements have been set not only to be used as examples, but also to establish a starting point to adapt your integration to your requirements.
+
+As implemented, this Anypoint Template leverages the [Batch Module](http://www.mulesoft.org/documentation/display/current/Batch+Processing). The batch job is divided in Input, Process and On Complete stages.
+
+The Template retrieves all updated Employees since last poll, checks for duplicates and triggers the Batch process. During the Batch Process stage, in the first step the different Employees are matched by email with the existing Users in Salesforce. In the second step the users are updated to Salesforce using a Batch Commit.
+
+Finally during the On Complete stage the Anypoint Template will log output statistics data into the console.
 
 # Considerations <a name="considerations"/>
 
 To make this Anypoint Template run, there are certain preconditions that must be considered. All of them deal with the preparations in both source and destination systems, that must be made in order for all to run smoothly. **Failling to do so could lead to unexpected behavior of the template.**
 
 1. **Users cannot be deleted in SalesForce:** For now, the only thing to do regarding users removal is disabling/deactivating them, but this won't make the username available for a new user.
-2. **Each user needs to be associated to a Profile:** SalesForce's profiles are what define the permissions the user will have for manipulating data and other users. Each SalesForce account has its own profiles. In this Anypoint Template you will find a processor labeled *setup Worker for upsert* where to set your Profile Ids from the source account. Note that for the integration test to run properly, you should change the constant *sfdc.profileId* in *mule.test.properties* to one that's valid in your source organization.
-3. **Working with sandboxes for the same account**: Although each sandbox should be a completely different environment, Usernames cannot be repeated in different sandboxes, i.e. if you have a user with username *bob.dylan* in *sandbox A*, you will not be able to create another user with username *bob.dylan* in *sandbox B*. If you are indeed working with Sandboxes for the same SalesForce account you will need to map the source username to a different one in the target sandbox, for this purpose, please refer to the processor labeled *setup Worker for upsert*.
-4. **Workday email uniqueness**: The email can be repeated for two or more accounts (or missing). Therefore Workday accounts with duplicate emails will be removed from processing in the Input stage.
+2. **Workday email uniqueness**: The email can be repeated for two or more accounts (or missing). Therefore Workday accounts with duplicate emails will be removed from processing in the Input stage.
 
 
 
@@ -73,7 +81,7 @@ There are no particular considerations for this Anypoint Template regarding Work
 
 
 # Run it! <a name="runit"/>
-Simple steps to get Workday to Salesforce Update Worker Broadcast running.
+Simple steps to get Workday to Salesforce Update Employee Broadcast running.
 
 
 ## Running on premise <a name="runonopremise"/>
@@ -138,15 +146,6 @@ In order to use this Mule Anypoint Template you need to configure properties (Cr
 + sfdc.securityToken `1234fdkfdkso20kw2sd`
 + sfdc.url `https://login.salesforce.com/services/Soap/u/28.0`
 
-+ sfdc.localeSidKey `en_US`
-+ sfdc.languageLocaleKey `en_US`
-+ sfdc.timeZoneSidKey `America/New_York`
-+ sfdc.emailEncodingKey `ISO-8859-1`
-
-+ sfdc.owner.id `10000000002D3JWAA0`
-+ sfdc.user.profile.id `10000000002D4JWAA0`
-+ sfdc.user.permission.id `10000000002D5JWAA0`
-
 # API Calls <a name="apicalls"/>
 Salesforce imposes limits on the number of API Calls that can be made. Therefore calculating this amount may be an important factor to consider. The Anypoint Template calls to the API can be calculated using the formula:
 
@@ -179,11 +178,11 @@ In the visual editor they can be found on the *Global Element* tab.
 
 
 ## businessLogic.xml<a name="businesslogicxml"/>
-Functional aspect of the Anypoint Template is implemented on this XML, directed by a batch job that will be responsible for creations/updates. The severeal message processors constitute four high level actions that fully implement the logic of this Anypoint Template:
+Functional aspect of the Anypoint Template is implemented on this XML, directed by a batch job that will be responsible for updates. The severeal message processors constitute four high level actions that fully implement the logic of this Anypoint Template:
 
-1. Job execution is invoked from triggerFlow (endpoints.xml) everytime there is a new query executed asking for created/updated Workers.
-2. During the Process stage, each Workers will be filtered depending on, if it has an existing matching User in the Salesforce.
-3. The last step of the Process stage will group the Users and create/update them in Salesforce. Finally during the On Complete stage the Anypoint Template will log output statistics data into the console.
+1. Job execution is invoked from triggerFlow (endpoints.xml) everytime there is a new query executed asking for updated Employees.
+2. During the Process stage, each Employee will be filtered depending on if it has an existing matching User in the Salesforce.
+3. The last step of the Process stage will group the Users and update them in Salesforce. Finally during the On Complete stage the Anypoint Template will log output statistics data into the console.
 
 
 
