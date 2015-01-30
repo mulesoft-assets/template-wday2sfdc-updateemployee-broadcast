@@ -24,11 +24,11 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
  			<watermark variable="lastQueryDate" default-expression="${watermark.default.expression}" update-expression="#[ new java.util.Date() ]" />
 			<processor-chain doc:name="query Workers and set collection">
 				<logger message="Fetching Workday to update... #[lastQueryDate]" level="INFO" doc:name="log 'Fetching workday to update...'"/>
-				<wd-hr:get-workers config-ref="WorkdayHumanResource" doc:name="get Workers from Workday Human Resource" workersRequest-ref="#[org.mule.kicks.UpdateEmployeeRequest.create(lastQueryDate, ${poll.frequencyMillis})]"></wd-hr:get-workers>
+				<wd-hr:get-workers config-ref="WorkdayHumanResource" doc:name="get Workers from Workday Human Resource" workersRequest-ref="#[org.mule.templates.UpdateEmployeeRequest.create(lastQueryDate, ${poll.frequencyMillis})]"></wd-hr:get-workers>
                 <data-mapper:transform config-ref="transform_Workday_workers_for_update" doc:name="transform Workday workers to map of values for update in Salesforce"/>
 			</processor-chain>
 		</poll>
-        <custom-filter doc:name="Custom component to filter duplicate workers" class="org.mule.kicks.WorkersDeduplicationFilter"/>
+        <custom-filter doc:name="Custom component to filter duplicate workers" class="org.mule.templates.WorkersDeduplicationFilter"/>
         <flow-ref name="mainFlow" doc:description="mainFlow"  doc:name="mainFlow"/>
     </flow>
 
