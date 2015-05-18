@@ -8,6 +8,7 @@ package org.mule.templates.integration;
 
 import com.workday.hr.GetWorkersResponseType;
 import com.workday.hr.WorkerType;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -20,6 +21,7 @@ import org.mule.processor.chain.InterceptingChainLifecycleWrapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -41,8 +43,18 @@ public class UpdateEmployeeQueryIT extends AbstractTemplateTestCase {
         System.setProperty("poll.frequencyMillis", "10000");
 
         // Set default water-mark expression to current time
-        System.clearProperty("watermark.default.expression");
-        System.setProperty("watermark.default.expression", "#[groovy: new Date(System.currentTimeMillis() - 1000 * 60 * 60 * 168)]");
+        Date initialDate = new Date(System.currentTimeMillis() - 1000 * 60 * 60 * 168);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(initialDate);
+        System.setProperty(
+        		"watermark.default.expression", 
+        		"#[groovy: new GregorianCalendar("
+        				+ cal.get(Calendar.YEAR) + ","
+        				+ cal.get(Calendar.MONTH) + ","
+        				+ cal.get(Calendar.DAY_OF_MONTH) + ","
+        				+ cal.get(Calendar.HOUR) + ","
+        				+ cal.get(Calendar.MINUTE) + ","
+        				+ cal.get(Calendar.SECOND) + ") ]");
     }
 
     @Before
@@ -69,7 +81,10 @@ public class UpdateEmployeeQueryIT extends AbstractTemplateTestCase {
     public void testMainFlow() throws Exception {
 
         Date date = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 168));
-        GetWorkersResponseType response = (GetWorkersResponseType) queryWorkdayEmployee(queryEmployeeFromWorkdayFlow, date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+        GetWorkersResponseType response = (GetWorkersResponseType) queryWorkdayEmployee(queryEmployeeFromWorkdayFlow, cal);
 
         if (response.getResponseData() != null) {
             List<WorkerType> workers = response.getResponseData().getWorker();
@@ -78,7 +93,7 @@ public class UpdateEmployeeQueryIT extends AbstractTemplateTestCase {
         }
     }
 
-    private Object queryWorkdayEmployee(InterceptingChainLifecycleWrapper flow, Date date)
+    private Object queryWorkdayEmployee(InterceptingChainLifecycleWrapper flow, Calendar date)
             throws MuleException, Exception {
 
         MuleMessage message = flow.process(getTestEvent(date, MessageExchangePattern.REQUEST_RESPONSE)).getMessage();
