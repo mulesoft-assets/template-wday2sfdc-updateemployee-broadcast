@@ -6420,7 +6420,7 @@
 <Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
 </Record>
 </Metadata>
-<Metadata __index="26" __referenceCounter="0" __sourcePath="{}/object/requestCriteria/transactionLogCriteriaData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="25b4a296-2563-4a21-b10e-8518c55c787e" _parent_id="__parent_id" _type="Input" id="cab2515b-32f5-40da-9ff4-a794e3a88441">
+<Metadata __index="26" __referenceCounter="1" __sourcePath="{}/object/requestCriteria/transactionLogCriteriaData" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="25b4a296-2563-4a21-b10e-8518c55c787e" _parent_id="__parent_id" _type="Input" id="cab2515b-32f5-40da-9ff4-a794e3a88441">
 <Record fieldDelimiter="," name="transactionLogCriteriaData" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
 <Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
@@ -6834,7 +6834,7 @@
 <Field __index="2051" __sourcePath="{}/object/responseData/worker/workerData/relatedPersonData/relatedPerson/personalData/contactData/webAddressData/usageData/useForTenantedReference/descriptor" containerType="SINGLE" label="descriptor" name="descriptor" type="string"/>
 </Record>
 </Metadata>
-<Metadata __index="0" __referenceCounter="1" __sourcePath="{}/user-map" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="5e08d60b-e2ce-48b8-8874-03750b0b4119">
+<Metadata __index="0" __referenceCounter="2" __sourcePath="{}/user-map" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="5e08d60b-e2ce-48b8-8874-03750b0b4119">
 <Record fieldDelimiter="," name="user_map" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
 <Field __index="0" __sourcePath="{}/user-map/Email" containerType="SINGLE" label="Email" name="Email" type="string"/>
@@ -6848,6 +6848,7 @@
 <Field __sourcePath="{}/user-map/TimeZoneSidKey" containerType="SINGLE" label="TimeZoneSidKey" name="TimeZoneSidKey" type="string"/>
 <Field __sourcePath="{}/user-map/Alias" containerType="SINGLE" label="Alias" name="Alias" type="string"/>
 <Field __sourcePath="{}/user-map/CommunityNickname" containerType="SINGLE" label="CommunityNickname" name="CommunityNickname" type="string"/>
+<Field __dmType="Calendar" __sourcePath="{}/user-map/LastModifiedDate" containerType="SINGLE" label="LastModifiedDate" name="LastModifiedDate" type="string"/>
 </Record>
 </Metadata>
 <Metadata __index="1520" __referenceCounter="0" __sourcePath="{}/object/responseData/worker/workerData/personalData/identificationData/visaID" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="5b093719-c3c6-4e3d-a24d-c7cdeb5d3542" _parent_id="__parent_id" _type="Input" id="f939af7a-3840-4f75-a292-4313a3387bb4">
@@ -7302,284 +7303,293 @@
 <Phase number="0">
 <Node enabled="enabled" fileURL="dict:inputPayload" guiName="Pojo READER" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
 <attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Context outPort="0" sequenceField="__id" xpath="./responseData/worker">
-  <Mapping cloverField="descriptor" trim="true" xpath="workerData/careerData/careerInterestsData/careerInterestReference/descriptor"/>
-  <Mapping cloverField="careerInterests" trim="true" xpath="workerData/careerData/careerInterestsData/careerInterests"/>
-  <Mapping cloverField="additionalInformation" trim="true" xpath="workerData/careerData/relocationData/additionalInformation"/>
-  <Mapping cloverField="descriptor_1" trim="true" xpath="workerData/careerData/relocationData/longTermRelocationReference/descriptor"/>
-  <Mapping cloverField="descriptor_2" trim="true" xpath="workerData/careerData/relocationData/shortTermRelocationReference/descriptor"/>
-  <Mapping cloverField="travelAdditionalInformation" trim="true" xpath="workerData/careerData/travelData/travelAdditionalInformation"/>
-  <Mapping cloverField="descriptor_3" trim="true" xpath="workerData/careerData/travelData/travelAmountReference/descriptor"/>
-  <Mapping cloverField="descriptor_4" trim="true" xpath="workerData/careerData/travelData/willingToTravelReference/descriptor"/>
-  <Mapping cloverField="compensationEffectiveDate" trim="true" xpath="workerData/compensationData/compensationEffectiveDate"/>
-  <Mapping cloverField="descriptor_5" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_6" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/frequencyReference/descriptor"/>
-  <Mapping cloverField="primaryCompensationBasis" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/primaryCompensationBasis"/>
-  <Mapping cloverField="totalBasePay" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/totalBasePay"/>
-  <Mapping cloverField="totalSalaryAndAllowances" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/totalSalaryAndAllowances"/>
-  <Mapping cloverField="descriptor_7" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_8" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/frequencyReference/descriptor"/>
-  <Mapping cloverField="primaryCompensationBasis_1" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/primaryCompensationBasis"/>
-  <Mapping cloverField="totalBasePay_1" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/totalBasePay"/>
-  <Mapping cloverField="totalSalaryAndAllowances_1" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/totalSalaryAndAllowances"/>
-  <Mapping cloverField="descriptor_9" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_10" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/frequencyReference/descriptor"/>
-  <Mapping cloverField="primaryCompensationBasis_2" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/primaryCompensationBasis"/>
-  <Mapping cloverField="totalBasePay_2" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/totalBasePay"/>
-  <Mapping cloverField="totalSalaryAndAllowances_2" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/totalSalaryAndAllowances"/>
-  <Mapping cloverField="descriptor_11" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInHourlyFrequency/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_12" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInHourlyFrequency/frequencyReference/descriptor"/>
-  <Mapping cloverField="totalBasePay_3" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInHourlyFrequency/totalBasePay"/>
-  <Mapping cloverField="descriptor_13" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_14" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/frequencyReference/descriptor"/>
-  <Mapping cloverField="primaryCompensationBasis_3" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/primaryCompensationBasis"/>
-  <Mapping cloverField="totalBasePay_4" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/totalBasePay"/>
-  <Mapping cloverField="totalSalaryAndAllowances_3" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/totalSalaryAndAllowances"/>
-  <Mapping cloverField="descriptor_15" trim="true" xpath="workerData/compensationData/reasonReference/descriptor"/>
-  <Mapping cloverField="descriptor_16" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/developmentPlanReference/descriptor"/>
-  <Mapping cloverField="comment" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/managerEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_17" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_18" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/managerReference/descriptor"/>
-  <Mapping cloverField="periodEndDate" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/periodEndDate"/>
-  <Mapping cloverField="periodStartDate" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/periodStartDate"/>
-  <Mapping cloverField="reviewInitiatedDate" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/reviewInitiatedDate"/>
-  <Mapping cloverField="descriptor_19" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/reviewTemplateReference/descriptor"/>
-  <Mapping cloverField="descriptor_20" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/reviewTypeReference/descriptor"/>
-  <Mapping cloverField="comment_1" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/selfEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_21" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_22" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/disciplinaryActionReference/descriptor"/>
-  <Mapping cloverField="comment_2" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/managerEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_23" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_24" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/managerReference/descriptor"/>
-  <Mapping cloverField="periodEndDate_1" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/periodEndDate"/>
-  <Mapping cloverField="periodStartDate_1" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/periodStartDate"/>
-  <Mapping cloverField="reviewInitiatedDate_1" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/reviewInitiatedDate"/>
-  <Mapping cloverField="descriptor_25" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/reviewTemplateReference/descriptor"/>
-  <Mapping cloverField="descriptor_26" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/reviewTypeReference/descriptor"/>
-  <Mapping cloverField="comment_3" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/selfEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_27" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_28" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/performanceImprovementPlanReference/descriptor"/>
-  <Mapping cloverField="comment_4" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/managerEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_29" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_30" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/managerReference/descriptor"/>
-  <Mapping cloverField="periodEndDate_2" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/periodEndDate"/>
-  <Mapping cloverField="periodStartDate_2" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/periodStartDate"/>
-  <Mapping cloverField="reviewInitiatedDate_2" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/reviewInitiatedDate"/>
-  <Mapping cloverField="descriptor_31" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/reviewTemplateReference/descriptor"/>
-  <Mapping cloverField="descriptor_32" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/reviewTypeReference/descriptor"/>
-  <Mapping cloverField="comment_5" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/selfEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_33" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_34" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/performanceReviewReference/descriptor"/>
-  <Mapping cloverField="comment_6" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/managerEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_35" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="descriptor_36" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/managerReference/descriptor"/>
-  <Mapping cloverField="periodEndDate_3" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/periodEndDate"/>
-  <Mapping cloverField="periodStartDate_3" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/periodStartDate"/>
-  <Mapping cloverField="reviewInitiatedDate_3" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/reviewInitiatedDate"/>
-  <Mapping cloverField="descriptor_37" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/reviewTemplateReference/descriptor"/>
-  <Mapping cloverField="descriptor_38" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/reviewTypeReference/descriptor"/>
-  <Mapping cloverField="comment_7" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/selfEvaluationData/overallData/comment"/>
-  <Mapping cloverField="descriptor_39" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
-  <Mapping cloverField="annualWorkPeriodEndDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/annualWorkPeriodEndDate"/>
-  <Mapping cloverField="annualWorkPeriodStartDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/annualWorkPeriodStartDate"/>
-  <Mapping cloverField="annualWorkPeriodWorkPercentOfYear" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/annualWorkPeriodWorkPercentOfYear"/>
-  <Mapping cloverField="disbursementPlanPeriodEndDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/disbursementPlanPeriodEndDate"/>
-  <Mapping cloverField="disbursementPlanPeriodStartDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/disbursementPlanPeriodStartDate"/>
-  <Mapping cloverField="descriptor_40" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/displayLanguageReference/descriptor"/>
-  <Mapping cloverField="descriptor_41" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/localReference/descriptor"/>
-  <Mapping cloverField="descriptor_42" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/locationReference/descriptor"/>
-  <Mapping cloverField="name" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/name"/>
-  <Mapping cloverField="scheduledWeeklyHours" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/scheduledWeeklyHours"/>
-  <Mapping cloverField="descriptor_43" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/timeProfileReference/descriptor"/>
-  <Mapping cloverField="businessTitle" trim="true" xpath="workerData/employmentData/positionData/businessTitle"/>
-  <Mapping cloverField="defaultWeeklyHours" trim="true" xpath="workerData/employmentData/positionData/defaultWeeklyHours"/>
-  <Mapping cloverField="effectiveDate" trim="true" xpath="workerData/employmentData/positionData/effectiveDate"/>
-  <Mapping cloverField="endDate" trim="true" xpath="workerData/employmentData/positionData/endDate"/>
-  <Mapping cloverField="endEmploymentDate" trim="true" xpath="workerData/employmentData/positionData/endEmploymentDate"/>
-  <Mapping cloverField="excludeFromHeadcount" trim="true" xpath="workerData/employmentData/positionData/excludeFromHeadcount"/>
-  <Mapping cloverField="federalWithholdingFEIN" trim="true" xpath="workerData/employmentData/positionData/federalWithholdingFEIN"/>
-  <Mapping cloverField="fullTimeEquivalentPercentage" trim="true" xpath="workerData/employmentData/positionData/fullTimeEquivalentPercentage"/>
-  <Mapping cloverField="descriptor_44" trim="true" xpath="workerData/employmentData/positionData/headcountReference/descriptor"/>
-  <Mapping cloverField="expectedAssignmentEndDate" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/expectedAssignmentEndDate"/>
-  <Mapping cloverField="descriptor_45" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/homeCountryReference/descriptor"/>
-  <Mapping cloverField="descriptor_46" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/hostCountryReference/descriptor"/>
-  <Mapping cloverField="descriptor_47" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/internationalAssignmentTypeReference/descriptor"/>
-  <Mapping cloverField="jobExempt" trim="true" xpath="workerData/employmentData/positionData/jobExempt"/>
-  <Mapping cloverField="criticalJob" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/criticalJob"/>
-  <Mapping cloverField="descriptor_48" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/difficultyToFillReference/descriptor"/>
-  <Mapping cloverField="descriptor_49" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobCategoryReference/descriptor"/>
-  <Mapping cloverField="jobExempt_1" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobExempt"/>
-  <Mapping cloverField="jobProfileName" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobProfileName"/>
-  <Mapping cloverField="descriptor_50" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobProfileReference/descriptor"/>
-  <Mapping cloverField="descriptor_51" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/managementLevelReference/descriptor"/>
-  <Mapping cloverField="workShiftRequired" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/workShiftRequired"/>
-  <Mapping cloverField="descriptor_52" trim="true" xpath="workerData/employmentData/positionData/payRateTypeReference/descriptor"/>
-  <Mapping cloverField="payThroughDate" trim="true" xpath="workerData/employmentData/positionData/payThroughDate"/>
-  <Mapping cloverField="effectiveDate_1" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/effectiveDate"/>
-  <Mapping cloverField="descriptor_53" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/externalEmployeeTypeReference/descriptor"/>
-  <Mapping cloverField="descriptor_54" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/frequencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_55" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payGroupReference/descriptor"/>
-  <Mapping cloverField="descriptor_56" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payRateTypeReference/descriptor"/>
-  <Mapping cloverField="descriptor_57" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payrollEntityReference/descriptor"/>
-  <Mapping cloverField="payrollFileNumber" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payrollFileNumber"/>
-  <Mapping cloverField="positionID" trim="true" xpath="workerData/employmentData/positionData/positionID"/>
-  <Mapping cloverField="descriptor_58" trim="true" xpath="workerData/employmentData/positionData/positionReference/descriptor"/>
-  <Mapping cloverField="descriptor_59" trim="true" xpath="workerData/employmentData/positionData/positionTimeTypeReference/descriptor"/>
-  <Mapping cloverField="positionTitle" trim="true" xpath="workerData/employmentData/positionData/positionTitle"/>
-  <Mapping cloverField="regularPaidEquivalentHours" trim="true" xpath="workerData/employmentData/positionData/regularPaidEquivalentHours"/>
-  <Mapping cloverField="scheduledWeeklyHours_1" trim="true" xpath="workerData/employmentData/positionData/scheduledWeeklyHours"/>
-  <Mapping cloverField="startDate" trim="true" xpath="workerData/employmentData/positionData/startDate"/>
-  <Mapping cloverField="descriptor_60" trim="true" xpath="workerData/employmentData/positionData/workHoursProfilesReference/descriptor"/>
-  <Mapping cloverField="descriptor_61" trim="true" xpath="workerData/employmentData/positionData/workShiftReference/descriptor"/>
-  <Mapping cloverField="descriptor_62" trim="true" xpath="workerData/employmentData/positionData/workSpaceReference/descriptor"/>
-  <Mapping cloverField="workerHoursProfileClassification" trim="true" xpath="workerData/employmentData/positionData/workerHoursProfileClassification"/>
-  <Mapping cloverField="descriptor_63" trim="true" xpath="workerData/employmentData/positionData/workerTypeReference/descriptor"/>
-  <Mapping cloverField="contractAssignmentDetails" trim="true" xpath="workerData/employmentData/workerContractData/contractAssignmentDetails"/>
-  <Mapping cloverField="contractEndDate" trim="true" xpath="workerData/employmentData/workerContractData/contractEndDate"/>
-  <Mapping cloverField="contractPayRate" trim="true" xpath="workerData/employmentData/workerContractData/contractPayRate"/>
-  <Mapping cloverField="descriptor_64" trim="true" xpath="workerData/employmentData/workerContractData/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_65" trim="true" xpath="workerData/employmentData/workerContractData/frequencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_66" trim="true" xpath="workerData/employmentData/workerContractData/supplierReference/descriptor"/>
-  <Mapping cloverField="academicTenureDate" trim="true" xpath="workerData/employmentData/workerStatusData/academicTenureDate"/>
-  <Mapping cloverField="active" trim="true" xpath="workerData/employmentData/workerStatusData/active"/>
-  <Mapping cloverField="activeStatusDate" trim="true" xpath="workerData/employmentData/workerStatusData/activeStatusDate"/>
-  <Mapping cloverField="benefitsServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/benefitsServiceDate"/>
-  <Mapping cloverField="companyServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/companyServiceDate"/>
-  <Mapping cloverField="continuousServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/continuousServiceDate"/>
-  <Mapping cloverField="dateEnteredWorkforce" trim="true" xpath="workerData/employmentData/workerStatusData/dateEnteredWorkforce"/>
-  <Mapping cloverField="daysUnemployed" trim="true" xpath="workerData/employmentData/workerStatusData/daysUnemployed"/>
-  <Mapping cloverField="endEmploymentDate_1" trim="true" xpath="workerData/employmentData/workerStatusData/endEmploymentDate"/>
-  <Mapping cloverField="expectedDateOfReturn" trim="true" xpath="workerData/employmentData/workerStatusData/expectedDateOfReturn"/>
-  <Mapping cloverField="expectedRetirementDate" trim="true" xpath="workerData/employmentData/workerStatusData/expectedRetirementDate"/>
-  <Mapping cloverField="firstDayOfWork" trim="true" xpath="workerData/employmentData/workerStatusData/firstDayOfWork"/>
-  <Mapping cloverField="hireDate" trim="true" xpath="workerData/employmentData/workerStatusData/hireDate"/>
-  <Mapping cloverField="descriptor_67" trim="true" xpath="workerData/employmentData/workerStatusData/hireReasonReference/descriptor"/>
-  <Mapping cloverField="lastDateForWhichPaid" trim="true" xpath="workerData/employmentData/workerStatusData/lastDateForWhichPaid"/>
-  <Mapping cloverField="descriptor_68" trim="true" xpath="workerData/employmentData/workerStatusData/localTerminationReasonReference/descriptor"/>
-  <Mapping cloverField="monthsContinuousPriorEmployment" trim="true" xpath="workerData/employmentData/workerStatusData/monthsContinuousPriorEmployment"/>
-  <Mapping cloverField="notEligibleForHire" trim="true" xpath="workerData/employmentData/workerStatusData/notEligibleForHire"/>
-  <Mapping cloverField="notReturning" trim="true" xpath="workerData/employmentData/workerStatusData/notReturning"/>
-  <Mapping cloverField="originalHireDate" trim="true" xpath="workerData/employmentData/workerStatusData/originalHireDate"/>
-  <Mapping cloverField="payThroughDate_1" trim="true" xpath="workerData/employmentData/workerStatusData/payThroughDate"/>
-  <Mapping cloverField="descriptor_69" trim="true" xpath="workerData/employmentData/workerStatusData/primaryTerminationCategoryReference/descriptor"/>
-  <Mapping cloverField="descriptor_70" trim="true" xpath="workerData/employmentData/workerStatusData/primaryTerminationReasonReference/descriptor"/>
-  <Mapping cloverField="probationEndDate" trim="true" xpath="workerData/employmentData/workerStatusData/probationEndDate"/>
-  <Mapping cloverField="probationStartDate" trim="true" xpath="workerData/employmentData/workerStatusData/probationStartDate"/>
-  <Mapping cloverField="regrettableTermination" trim="true" xpath="workerData/employmentData/workerStatusData/regrettableTermination"/>
-  <Mapping cloverField="rehire" trim="true" xpath="workerData/employmentData/workerStatusData/rehire"/>
-  <Mapping cloverField="resignationDate" trim="true" xpath="workerData/employmentData/workerStatusData/resignationDate"/>
-  <Mapping cloverField="retired" trim="true" xpath="workerData/employmentData/workerStatusData/retired"/>
-  <Mapping cloverField="retirementDate" trim="true" xpath="workerData/employmentData/workerStatusData/retirementDate"/>
-  <Mapping cloverField="retirementEligibilityDate" trim="true" xpath="workerData/employmentData/workerStatusData/retirementEligibilityDate"/>
-  <Mapping cloverField="returnUnknown" trim="true" xpath="workerData/employmentData/workerStatusData/returnUnknown"/>
-  <Mapping cloverField="seniorityDate" trim="true" xpath="workerData/employmentData/workerStatusData/seniorityDate"/>
-  <Mapping cloverField="severanceDate" trim="true" xpath="workerData/employmentData/workerStatusData/severanceDate"/>
-  <Mapping cloverField="terminated" trim="true" xpath="workerData/employmentData/workerStatusData/terminated"/>
-  <Mapping cloverField="terminationDate" trim="true" xpath="workerData/employmentData/workerStatusData/terminationDate"/>
-  <Mapping cloverField="terminationInvoluntary" trim="true" xpath="workerData/employmentData/workerStatusData/terminationInvoluntary"/>
-  <Mapping cloverField="terminationLastDayOfWork" trim="true" xpath="workerData/employmentData/workerStatusData/terminationLastDayOfWork"/>
-  <Mapping cloverField="timeOffServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/timeOffServiceDate"/>
-  <Mapping cloverField="vestingDate" trim="true" xpath="workerData/employmentData/workerStatusData/vestingDate"/>
-  <Mapping cloverField="birthDate" trim="true" xpath="workerData/personalData/birthDate"/>
-  <Mapping cloverField="cityOfBirth" trim="true" xpath="workerData/personalData/cityOfBirth"/>
-  <Mapping cloverField="descriptor_71" trim="true" xpath="workerData/personalData/countryOfBirthReference/descriptor"/>
-  <Mapping cloverField="dateOfDeath" trim="true" xpath="workerData/personalData/dateOfDeath"/>
-  <Mapping cloverField="descriptor_72" trim="true" xpath="workerData/personalData/genderReference/descriptor"/>
-  <Mapping cloverField="hispanicOrLatino" trim="true" xpath="workerData/personalData/hispanicOrLatino"/>
-  <Mapping cloverField="hukouLocality" trim="true" xpath="workerData/personalData/hukouLocality"/>
-  <Mapping cloverField="hukouPostalCode" trim="true" xpath="workerData/personalData/hukouPostalCode"/>
-  <Mapping cloverField="descriptor_73" trim="true" xpath="workerData/personalData/hukouRegionReference/descriptor"/>
-  <Mapping cloverField="descriptor_74" trim="true" xpath="workerData/personalData/hukouSubregionReference/descriptor"/>
-  <Mapping cloverField="descriptor_75" trim="true" xpath="workerData/personalData/hukouTypeReference/descriptor"/>
-  <Mapping cloverField="lastMedicalExamDate" trim="true" xpath="workerData/personalData/lastMedicalExamDate"/>
-  <Mapping cloverField="lastMedicalExamValidTo" trim="true" xpath="workerData/personalData/lastMedicalExamValidTo"/>
-  <Mapping cloverField="localHukou" trim="true" xpath="workerData/personalData/localHukou"/>
-  <Mapping cloverField="maritalStatusDate" trim="true" xpath="workerData/personalData/maritalStatusDate"/>
-  <Mapping cloverField="descriptor_76" trim="true" xpath="workerData/personalData/maritalStatusReference/descriptor"/>
-  <Mapping cloverField="medicalExamNotes" trim="true" xpath="workerData/personalData/medicalExamNotes"/>
-  <Mapping cloverField="descriptor_77" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/countryReference/descriptor"/>
-  <Mapping cloverField="firstName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/firstName"/>
-  <Mapping cloverField="formattedName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/formattedName"/>
-  <Mapping cloverField="fullNameForSingaporeAndMalaysia" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/fullNameForSingaporeAndMalaysia"/>
-  <Mapping cloverField="lastName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/lastName"/>
-  <Mapping cloverField="firstName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/firstName"/>
-  <Mapping cloverField="firstName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/firstName2"/>
-  <Mapping cloverField="lastName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/lastName"/>
-  <Mapping cloverField="lastName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/lastName2"/>
-  <Mapping cloverField="localName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/localName"/>
-  <Mapping cloverField="localScript" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/localScript"/>
-  <Mapping cloverField="middleName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/middleName"/>
-  <Mapping cloverField="middleName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/middleName2"/>
-  <Mapping cloverField="secondaryLastName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/secondaryLastName"/>
-  <Mapping cloverField="secondaryLastName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/secondaryLastName2"/>
-  <Mapping cloverField="middleName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/middleName"/>
-  <Mapping cloverField="descriptor_78" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/prefixData/salutationReference/descriptor"/>
-  <Mapping cloverField="descriptor_79" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/prefixData/titleReference/descriptor"/>
-  <Mapping cloverField="reportingName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/reportingName"/>
-  <Mapping cloverField="secondaryLastName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/secondaryLastName"/>
-  <Mapping cloverField="descriptor_80" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/academicSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_81" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/hereditarySuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_82" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/honorarySuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_83" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/professionalSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_84" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/religiousSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_85" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/royalSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_86" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/socialSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_87" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/countryReference/descriptor"/>
-  <Mapping cloverField="firstName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/firstName"/>
-  <Mapping cloverField="formattedName_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/formattedName"/>
-  <Mapping cloverField="fullNameForSingaporeAndMalaysia_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/fullNameForSingaporeAndMalaysia"/>
-  <Mapping cloverField="lastName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/lastName"/>
-  <Mapping cloverField="firstName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/firstName"/>
-  <Mapping cloverField="firstName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/firstName2"/>
-  <Mapping cloverField="lastName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/lastName"/>
-  <Mapping cloverField="lastName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/lastName2"/>
-  <Mapping cloverField="localName_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/localName"/>
-  <Mapping cloverField="localScript_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/localScript"/>
-  <Mapping cloverField="middleName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/middleName"/>
-  <Mapping cloverField="middleName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/middleName2"/>
-  <Mapping cloverField="secondaryLastName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/secondaryLastName"/>
-  <Mapping cloverField="secondaryLastName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/secondaryLastName2"/>
-  <Mapping cloverField="middleName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/middleName"/>
-  <Mapping cloverField="descriptor_88" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/prefixData/salutationReference/descriptor"/>
-  <Mapping cloverField="descriptor_89" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/prefixData/titleReference/descriptor"/>
-  <Mapping cloverField="reportingName_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/reportingName"/>
-  <Mapping cloverField="secondaryLastName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/secondaryLastName"/>
-  <Mapping cloverField="descriptor_90" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/academicSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_91" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/hereditarySuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_92" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/honorarySuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_93" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/professionalSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_94" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/religiousSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_95" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/royalSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_96" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/socialSuffixReference/descriptor"/>
-  <Mapping cloverField="descriptor_97" trim="true" xpath="workerData/personalData/nationalityReference/descriptor"/>
-  <Mapping cloverField="descriptor_98" trim="true" xpath="workerData/personalData/nativeRegionReference/descriptor"/>
-  <Mapping cloverField="personnelFileAgencyForPerson" trim="true" xpath="workerData/personalData/personnelFileAgencyForPerson"/>
-  <Mapping cloverField="descriptor_99" trim="true" xpath="workerData/personalData/politicalAffiliationReference/descriptor"/>
-  <Mapping cloverField="descriptor_100" trim="true" xpath="workerData/personalData/regionOfBirthReference/descriptor"/>
-  <Mapping cloverField="descriptor_101" trim="true" xpath="workerData/personalData/religionReference/descriptor"/>
-  <Mapping cloverField="tobaccoUse" trim="true" xpath="workerData/personalData/tobaccoUse"/>
-  <Mapping cloverField="filename" trim="true" xpath="workerData/photoData/filename"/>
-  <Mapping cloverField="image" trim="true" xpath="workerData/photoData/image"/>
-  <Mapping cloverField="numberOfPayrollDependents" trim="true" xpath="workerData/relatedPersonData/numberOfPayrollDependents"/>
-  <Mapping cloverField="descriptor_102" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/achievableLevelReference/descriptor"/>
-  <Mapping cloverField="descriptor_103" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/lossImpactRiskReference/descriptor"/>
-  <Mapping cloverField="notes" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/notes"/>
-  <Mapping cloverField="descriptor_104" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/potentialReference/descriptor"/>
-  <Mapping cloverField="descriptor_105" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/retentionRiskReference/descriptor"/>
-  <Mapping cloverField="descriptor_106" trim="true" xpath="workerData/userAccountData/currencyReference/descriptor"/>
-  <Mapping cloverField="descriptor_107" trim="true" xpath="workerData/userAccountData/defaultDisplayLanguageReference/descriptor"/>
-  <Mapping cloverField="descriptor_108" trim="true" xpath="workerData/userAccountData/localeReference/descriptor"/>
-  <Mapping cloverField="descriptor_109" trim="true" xpath="workerData/userAccountData/timeZoneReference/descriptor"/>
-  <Mapping cloverField="descriptor_110" trim="true" xpath="workerData/userAccountData/userLanguageReference/descriptor"/>
-  <Mapping cloverField="userName" trim="true" xpath="workerData/userAccountData/userName"/>
-  <Mapping cloverField="userID" trim="true" xpath="workerData/userID"/>
-  <Mapping cloverField="workerID" trim="true" xpath="workerData/workerID"/>
-  <Mapping cloverField="descriptor_111" trim="true" xpath="workerReference/descriptor"/>
-  <Mapping cloverField="FirstName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/firstName"/>
-  <Mapping cloverField="LastName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/lastName"/>
-  <Mapping cloverField="Email" trim="true" xpath="workerData/personalData/contactData/emailAddressData/emailAddress"/>
-  <Mapping cloverField="Username" trim="true" xpath="workerData/userID"/>
-  <Mapping cloverField="Terminated" trim="true" xpath="workerData/employmentData/workerStatusData/terminated"/>
+<Context xpath=".">
+  <Context outPort="0" sequenceField="__id" xpath="./responseData/worker">
+    <Mapping cloverField="descriptor" trim="true" xpath="workerData/careerData/careerInterestsData/careerInterestReference/descriptor"/>
+    <Mapping cloverField="careerInterests" trim="true" xpath="workerData/careerData/careerInterestsData/careerInterests"/>
+    <Mapping cloverField="additionalInformation" trim="true" xpath="workerData/careerData/relocationData/additionalInformation"/>
+    <Mapping cloverField="descriptor_1" trim="true" xpath="workerData/careerData/relocationData/longTermRelocationReference/descriptor"/>
+    <Mapping cloverField="descriptor_2" trim="true" xpath="workerData/careerData/relocationData/shortTermRelocationReference/descriptor"/>
+    <Mapping cloverField="travelAdditionalInformation" trim="true" xpath="workerData/careerData/travelData/travelAdditionalInformation"/>
+    <Mapping cloverField="descriptor_3" trim="true" xpath="workerData/careerData/travelData/travelAmountReference/descriptor"/>
+    <Mapping cloverField="descriptor_4" trim="true" xpath="workerData/careerData/travelData/willingToTravelReference/descriptor"/>
+    <Mapping cloverField="compensationEffectiveDate" trim="true" xpath="workerData/compensationData/compensationEffectiveDate"/>
+    <Mapping cloverField="descriptor_5" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_6" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/frequencyReference/descriptor"/>
+    <Mapping cloverField="primaryCompensationBasis" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/primaryCompensationBasis"/>
+    <Mapping cloverField="totalBasePay" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/totalBasePay"/>
+    <Mapping cloverField="totalSalaryAndAllowances" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedInReportingCurrencySummaryData/totalSalaryAndAllowances"/>
+    <Mapping cloverField="descriptor_7" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_8" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/frequencyReference/descriptor"/>
+    <Mapping cloverField="primaryCompensationBasis_1" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/primaryCompensationBasis"/>
+    <Mapping cloverField="totalBasePay_1" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/totalBasePay"/>
+    <Mapping cloverField="totalSalaryAndAllowances_1" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/annualizedSummaryData/totalSalaryAndAllowances"/>
+    <Mapping cloverField="descriptor_9" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_10" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/frequencyReference/descriptor"/>
+    <Mapping cloverField="primaryCompensationBasis_2" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/primaryCompensationBasis"/>
+    <Mapping cloverField="totalBasePay_2" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/totalBasePay"/>
+    <Mapping cloverField="totalSalaryAndAllowances_2" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/employeeCompensationSummaryData/totalSalaryAndAllowances"/>
+    <Mapping cloverField="descriptor_11" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInHourlyFrequency/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_12" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInHourlyFrequency/frequencyReference/descriptor"/>
+    <Mapping cloverField="totalBasePay_3" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInHourlyFrequency/totalBasePay"/>
+    <Mapping cloverField="descriptor_13" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_14" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/frequencyReference/descriptor"/>
+    <Mapping cloverField="primaryCompensationBasis_3" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/primaryCompensationBasis"/>
+    <Mapping cloverField="totalBasePay_4" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/totalBasePay"/>
+    <Mapping cloverField="totalSalaryAndAllowances_3" trim="true" xpath="workerData/compensationData/employeeCompensationSummaryData/summaryDataInPayGroupFrequency/totalSalaryAndAllowances"/>
+    <Mapping cloverField="descriptor_15" trim="true" xpath="workerData/compensationData/reasonReference/descriptor"/>
+    <Mapping cloverField="descriptor_16" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/developmentPlanReference/descriptor"/>
+    <Mapping cloverField="comment" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/managerEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_17" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_18" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/managerReference/descriptor"/>
+    <Mapping cloverField="periodEndDate" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/periodEndDate"/>
+    <Mapping cloverField="periodStartDate" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/periodStartDate"/>
+    <Mapping cloverField="reviewInitiatedDate" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/reviewInitiatedDate"/>
+    <Mapping cloverField="descriptor_19" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/reviewTemplateReference/descriptor"/>
+    <Mapping cloverField="descriptor_20" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/reviewTypeReference/descriptor"/>
+    <Mapping cloverField="comment_1" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/selfEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_21" trim="true" xpath="workerData/employeeReviewData/developmentPlanData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_22" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/disciplinaryActionReference/descriptor"/>
+    <Mapping cloverField="comment_2" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/managerEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_23" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_24" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/managerReference/descriptor"/>
+    <Mapping cloverField="periodEndDate_1" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/periodEndDate"/>
+    <Mapping cloverField="periodStartDate_1" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/periodStartDate"/>
+    <Mapping cloverField="reviewInitiatedDate_1" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/reviewInitiatedDate"/>
+    <Mapping cloverField="descriptor_25" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/reviewTemplateReference/descriptor"/>
+    <Mapping cloverField="descriptor_26" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/reviewTypeReference/descriptor"/>
+    <Mapping cloverField="comment_3" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/selfEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_27" trim="true" xpath="workerData/employeeReviewData/disciplinaryActionData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_28" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/performanceImprovementPlanReference/descriptor"/>
+    <Mapping cloverField="comment_4" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/managerEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_29" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_30" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/managerReference/descriptor"/>
+    <Mapping cloverField="periodEndDate_2" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/periodEndDate"/>
+    <Mapping cloverField="periodStartDate_2" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/periodStartDate"/>
+    <Mapping cloverField="reviewInitiatedDate_2" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/reviewInitiatedDate"/>
+    <Mapping cloverField="descriptor_31" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/reviewTemplateReference/descriptor"/>
+    <Mapping cloverField="descriptor_32" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/reviewTypeReference/descriptor"/>
+    <Mapping cloverField="comment_5" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/selfEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_33" trim="true" xpath="workerData/employeeReviewData/performanceImprovementPlanData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_34" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/performanceReviewReference/descriptor"/>
+    <Mapping cloverField="comment_6" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/managerEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_35" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/managerEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="descriptor_36" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/managerReference/descriptor"/>
+    <Mapping cloverField="periodEndDate_3" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/periodEndDate"/>
+    <Mapping cloverField="periodStartDate_3" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/periodStartDate"/>
+    <Mapping cloverField="reviewInitiatedDate_3" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/reviewInitiatedDate"/>
+    <Mapping cloverField="descriptor_37" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/reviewTemplateReference/descriptor"/>
+    <Mapping cloverField="descriptor_38" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/reviewTypeReference/descriptor"/>
+    <Mapping cloverField="comment_7" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/selfEvaluationData/overallData/comment"/>
+    <Mapping cloverField="descriptor_39" trim="true" xpath="workerData/employeeReviewData/performanceReviewData/reviewData/selfEvaluationData/overallData/ratingReference/descriptor"/>
+    <Mapping cloverField="annualWorkPeriodEndDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/annualWorkPeriodEndDate"/>
+    <Mapping cloverField="annualWorkPeriodStartDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/annualWorkPeriodStartDate"/>
+    <Mapping cloverField="annualWorkPeriodWorkPercentOfYear" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/annualWorkPeriodWorkPercentOfYear"/>
+    <Mapping cloverField="disbursementPlanPeriodEndDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/disbursementPlanPeriodEndDate"/>
+    <Mapping cloverField="disbursementPlanPeriodStartDate" trim="true" xpath="workerData/employmentData/positionData/academicPaySetupData/disbursementPlanPeriodStartDate"/>
+    <Mapping cloverField="descriptor_40" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/displayLanguageReference/descriptor"/>
+    <Mapping cloverField="descriptor_41" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/localReference/descriptor"/>
+    <Mapping cloverField="descriptor_42" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/locationReference/descriptor"/>
+    <Mapping cloverField="name" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/name"/>
+    <Mapping cloverField="scheduledWeeklyHours" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/scheduledWeeklyHours"/>
+    <Mapping cloverField="descriptor_43" trim="true" xpath="workerData/employmentData/positionData/businessSiteSummaryData/timeProfileReference/descriptor"/>
+    <Mapping cloverField="businessTitle" trim="true" xpath="workerData/employmentData/positionData/businessTitle"/>
+    <Mapping cloverField="defaultWeeklyHours" trim="true" xpath="workerData/employmentData/positionData/defaultWeeklyHours"/>
+    <Mapping cloverField="effectiveDate" trim="true" xpath="workerData/employmentData/positionData/effectiveDate"/>
+    <Mapping cloverField="endDate" trim="true" xpath="workerData/employmentData/positionData/endDate"/>
+    <Mapping cloverField="endEmploymentDate" trim="true" xpath="workerData/employmentData/positionData/endEmploymentDate"/>
+    <Mapping cloverField="excludeFromHeadcount" trim="true" xpath="workerData/employmentData/positionData/excludeFromHeadcount"/>
+    <Mapping cloverField="federalWithholdingFEIN" trim="true" xpath="workerData/employmentData/positionData/federalWithholdingFEIN"/>
+    <Mapping cloverField="fullTimeEquivalentPercentage" trim="true" xpath="workerData/employmentData/positionData/fullTimeEquivalentPercentage"/>
+    <Mapping cloverField="descriptor_44" trim="true" xpath="workerData/employmentData/positionData/headcountReference/descriptor"/>
+    <Mapping cloverField="expectedAssignmentEndDate" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/expectedAssignmentEndDate"/>
+    <Mapping cloverField="descriptor_45" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/homeCountryReference/descriptor"/>
+    <Mapping cloverField="descriptor_46" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/hostCountryReference/descriptor"/>
+    <Mapping cloverField="descriptor_47" trim="true" xpath="workerData/employmentData/positionData/internationalAssignmentData/internationalAssignmentTypeReference/descriptor"/>
+    <Mapping cloverField="jobExempt" trim="true" xpath="workerData/employmentData/positionData/jobExempt"/>
+    <Mapping cloverField="criticalJob" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/criticalJob"/>
+    <Mapping cloverField="descriptor_48" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/difficultyToFillReference/descriptor"/>
+    <Mapping cloverField="descriptor_49" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobCategoryReference/descriptor"/>
+    <Mapping cloverField="jobExempt_1" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobExempt"/>
+    <Mapping cloverField="jobProfileName" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobProfileName"/>
+    <Mapping cloverField="descriptor_50" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/jobProfileReference/descriptor"/>
+    <Mapping cloverField="descriptor_51" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/managementLevelReference/descriptor"/>
+    <Mapping cloverField="workShiftRequired" trim="true" xpath="workerData/employmentData/positionData/jobProfileSummaryData/workShiftRequired"/>
+    <Mapping cloverField="descriptor_52" trim="true" xpath="workerData/employmentData/positionData/payRateTypeReference/descriptor"/>
+    <Mapping cloverField="payThroughDate" trim="true" xpath="workerData/employmentData/positionData/payThroughDate"/>
+    <Mapping cloverField="effectiveDate_1" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/effectiveDate"/>
+    <Mapping cloverField="descriptor_53" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/externalEmployeeTypeReference/descriptor"/>
+    <Mapping cloverField="descriptor_54" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/frequencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_55" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payGroupReference/descriptor"/>
+    <Mapping cloverField="descriptor_56" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payRateTypeReference/descriptor"/>
+    <Mapping cloverField="descriptor_57" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payrollEntityReference/descriptor"/>
+    <Mapping cloverField="payrollFileNumber" trim="true" xpath="workerData/employmentData/positionData/payrollInterfaceProcessingData/payrollFileNumber"/>
+    <Mapping cloverField="positionID" trim="true" xpath="workerData/employmentData/positionData/positionID"/>
+    <Mapping cloverField="descriptor_58" trim="true" xpath="workerData/employmentData/positionData/positionReference/descriptor"/>
+    <Mapping cloverField="descriptor_59" trim="true" xpath="workerData/employmentData/positionData/positionTimeTypeReference/descriptor"/>
+    <Mapping cloverField="positionTitle" trim="true" xpath="workerData/employmentData/positionData/positionTitle"/>
+    <Mapping cloverField="regularPaidEquivalentHours" trim="true" xpath="workerData/employmentData/positionData/regularPaidEquivalentHours"/>
+    <Mapping cloverField="scheduledWeeklyHours_1" trim="true" xpath="workerData/employmentData/positionData/scheduledWeeklyHours"/>
+    <Mapping cloverField="startDate" trim="true" xpath="workerData/employmentData/positionData/startDate"/>
+    <Mapping cloverField="descriptor_60" trim="true" xpath="workerData/employmentData/positionData/workHoursProfilesReference/descriptor"/>
+    <Mapping cloverField="descriptor_61" trim="true" xpath="workerData/employmentData/positionData/workShiftReference/descriptor"/>
+    <Mapping cloverField="descriptor_62" trim="true" xpath="workerData/employmentData/positionData/workSpaceReference/descriptor"/>
+    <Mapping cloverField="workerHoursProfileClassification" trim="true" xpath="workerData/employmentData/positionData/workerHoursProfileClassification"/>
+    <Mapping cloverField="descriptor_63" trim="true" xpath="workerData/employmentData/positionData/workerTypeReference/descriptor"/>
+    <Mapping cloverField="contractAssignmentDetails" trim="true" xpath="workerData/employmentData/workerContractData/contractAssignmentDetails"/>
+    <Mapping cloverField="contractEndDate" trim="true" xpath="workerData/employmentData/workerContractData/contractEndDate"/>
+    <Mapping cloverField="contractPayRate" trim="true" xpath="workerData/employmentData/workerContractData/contractPayRate"/>
+    <Mapping cloverField="descriptor_64" trim="true" xpath="workerData/employmentData/workerContractData/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_65" trim="true" xpath="workerData/employmentData/workerContractData/frequencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_66" trim="true" xpath="workerData/employmentData/workerContractData/supplierReference/descriptor"/>
+    <Mapping cloverField="academicTenureDate" trim="true" xpath="workerData/employmentData/workerStatusData/academicTenureDate"/>
+    <Mapping cloverField="active" trim="true" xpath="workerData/employmentData/workerStatusData/active"/>
+    <Mapping cloverField="activeStatusDate" trim="true" xpath="workerData/employmentData/workerStatusData/activeStatusDate"/>
+    <Mapping cloverField="benefitsServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/benefitsServiceDate"/>
+    <Mapping cloverField="companyServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/companyServiceDate"/>
+    <Mapping cloverField="continuousServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/continuousServiceDate"/>
+    <Mapping cloverField="dateEnteredWorkforce" trim="true" xpath="workerData/employmentData/workerStatusData/dateEnteredWorkforce"/>
+    <Mapping cloverField="daysUnemployed" trim="true" xpath="workerData/employmentData/workerStatusData/daysUnemployed"/>
+    <Mapping cloverField="endEmploymentDate_1" trim="true" xpath="workerData/employmentData/workerStatusData/endEmploymentDate"/>
+    <Mapping cloverField="expectedDateOfReturn" trim="true" xpath="workerData/employmentData/workerStatusData/expectedDateOfReturn"/>
+    <Mapping cloverField="expectedRetirementDate" trim="true" xpath="workerData/employmentData/workerStatusData/expectedRetirementDate"/>
+    <Mapping cloverField="firstDayOfWork" trim="true" xpath="workerData/employmentData/workerStatusData/firstDayOfWork"/>
+    <Mapping cloverField="hireDate" trim="true" xpath="workerData/employmentData/workerStatusData/hireDate"/>
+    <Mapping cloverField="descriptor_67" trim="true" xpath="workerData/employmentData/workerStatusData/hireReasonReference/descriptor"/>
+    <Mapping cloverField="lastDateForWhichPaid" trim="true" xpath="workerData/employmentData/workerStatusData/lastDateForWhichPaid"/>
+    <Mapping cloverField="descriptor_68" trim="true" xpath="workerData/employmentData/workerStatusData/localTerminationReasonReference/descriptor"/>
+    <Mapping cloverField="monthsContinuousPriorEmployment" trim="true" xpath="workerData/employmentData/workerStatusData/monthsContinuousPriorEmployment"/>
+    <Mapping cloverField="notEligibleForHire" trim="true" xpath="workerData/employmentData/workerStatusData/notEligibleForHire"/>
+    <Mapping cloverField="notReturning" trim="true" xpath="workerData/employmentData/workerStatusData/notReturning"/>
+    <Mapping cloverField="originalHireDate" trim="true" xpath="workerData/employmentData/workerStatusData/originalHireDate"/>
+    <Mapping cloverField="payThroughDate_1" trim="true" xpath="workerData/employmentData/workerStatusData/payThroughDate"/>
+    <Mapping cloverField="descriptor_69" trim="true" xpath="workerData/employmentData/workerStatusData/primaryTerminationCategoryReference/descriptor"/>
+    <Mapping cloverField="descriptor_70" trim="true" xpath="workerData/employmentData/workerStatusData/primaryTerminationReasonReference/descriptor"/>
+    <Mapping cloverField="probationEndDate" trim="true" xpath="workerData/employmentData/workerStatusData/probationEndDate"/>
+    <Mapping cloverField="probationStartDate" trim="true" xpath="workerData/employmentData/workerStatusData/probationStartDate"/>
+    <Mapping cloverField="regrettableTermination" trim="true" xpath="workerData/employmentData/workerStatusData/regrettableTermination"/>
+    <Mapping cloverField="rehire" trim="true" xpath="workerData/employmentData/workerStatusData/rehire"/>
+    <Mapping cloverField="resignationDate" trim="true" xpath="workerData/employmentData/workerStatusData/resignationDate"/>
+    <Mapping cloverField="retired" trim="true" xpath="workerData/employmentData/workerStatusData/retired"/>
+    <Mapping cloverField="retirementDate" trim="true" xpath="workerData/employmentData/workerStatusData/retirementDate"/>
+    <Mapping cloverField="retirementEligibilityDate" trim="true" xpath="workerData/employmentData/workerStatusData/retirementEligibilityDate"/>
+    <Mapping cloverField="returnUnknown" trim="true" xpath="workerData/employmentData/workerStatusData/returnUnknown"/>
+    <Mapping cloverField="seniorityDate" trim="true" xpath="workerData/employmentData/workerStatusData/seniorityDate"/>
+    <Mapping cloverField="severanceDate" trim="true" xpath="workerData/employmentData/workerStatusData/severanceDate"/>
+    <Mapping cloverField="terminated" trim="true" xpath="workerData/employmentData/workerStatusData/terminated"/>
+    <Mapping cloverField="terminationDate" trim="true" xpath="workerData/employmentData/workerStatusData/terminationDate"/>
+    <Mapping cloverField="terminationInvoluntary" trim="true" xpath="workerData/employmentData/workerStatusData/terminationInvoluntary"/>
+    <Mapping cloverField="terminationLastDayOfWork" trim="true" xpath="workerData/employmentData/workerStatusData/terminationLastDayOfWork"/>
+    <Mapping cloverField="timeOffServiceDate" trim="true" xpath="workerData/employmentData/workerStatusData/timeOffServiceDate"/>
+    <Mapping cloverField="vestingDate" trim="true" xpath="workerData/employmentData/workerStatusData/vestingDate"/>
+    <Mapping cloverField="birthDate" trim="true" xpath="workerData/personalData/birthDate"/>
+    <Mapping cloverField="cityOfBirth" trim="true" xpath="workerData/personalData/cityOfBirth"/>
+    <Mapping cloverField="descriptor_71" trim="true" xpath="workerData/personalData/countryOfBirthReference/descriptor"/>
+    <Mapping cloverField="dateOfDeath" trim="true" xpath="workerData/personalData/dateOfDeath"/>
+    <Mapping cloverField="descriptor_72" trim="true" xpath="workerData/personalData/genderReference/descriptor"/>
+    <Mapping cloverField="hispanicOrLatino" trim="true" xpath="workerData/personalData/hispanicOrLatino"/>
+    <Mapping cloverField="hukouLocality" trim="true" xpath="workerData/personalData/hukouLocality"/>
+    <Mapping cloverField="hukouPostalCode" trim="true" xpath="workerData/personalData/hukouPostalCode"/>
+    <Mapping cloverField="descriptor_73" trim="true" xpath="workerData/personalData/hukouRegionReference/descriptor"/>
+    <Mapping cloverField="descriptor_74" trim="true" xpath="workerData/personalData/hukouSubregionReference/descriptor"/>
+    <Mapping cloverField="descriptor_75" trim="true" xpath="workerData/personalData/hukouTypeReference/descriptor"/>
+    <Mapping cloverField="lastMedicalExamDate" trim="true" xpath="workerData/personalData/lastMedicalExamDate"/>
+    <Mapping cloverField="lastMedicalExamValidTo" trim="true" xpath="workerData/personalData/lastMedicalExamValidTo"/>
+    <Mapping cloverField="localHukou" trim="true" xpath="workerData/personalData/localHukou"/>
+    <Mapping cloverField="maritalStatusDate" trim="true" xpath="workerData/personalData/maritalStatusDate"/>
+    <Mapping cloverField="descriptor_76" trim="true" xpath="workerData/personalData/maritalStatusReference/descriptor"/>
+    <Mapping cloverField="medicalExamNotes" trim="true" xpath="workerData/personalData/medicalExamNotes"/>
+    <Mapping cloverField="descriptor_77" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/countryReference/descriptor"/>
+    <Mapping cloverField="firstName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/firstName"/>
+    <Mapping cloverField="formattedName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/formattedName"/>
+    <Mapping cloverField="fullNameForSingaporeAndMalaysia" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/fullNameForSingaporeAndMalaysia"/>
+    <Mapping cloverField="lastName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/lastName"/>
+    <Mapping cloverField="firstName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/firstName"/>
+    <Mapping cloverField="firstName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/firstName2"/>
+    <Mapping cloverField="lastName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/lastName"/>
+    <Mapping cloverField="lastName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/lastName2"/>
+    <Mapping cloverField="localName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/localName"/>
+    <Mapping cloverField="localScript" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/localScript"/>
+    <Mapping cloverField="middleName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/middleName"/>
+    <Mapping cloverField="middleName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/middleName2"/>
+    <Mapping cloverField="secondaryLastName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/secondaryLastName"/>
+    <Mapping cloverField="secondaryLastName2" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/localNameDetailData/secondaryLastName2"/>
+    <Mapping cloverField="middleName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/middleName"/>
+    <Mapping cloverField="descriptor_78" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/prefixData/salutationReference/descriptor"/>
+    <Mapping cloverField="descriptor_79" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/prefixData/titleReference/descriptor"/>
+    <Mapping cloverField="reportingName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/reportingName"/>
+    <Mapping cloverField="secondaryLastName_1" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/secondaryLastName"/>
+    <Mapping cloverField="descriptor_80" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/academicSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_81" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/hereditarySuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_82" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/honorarySuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_83" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/professionalSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_84" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/religiousSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_85" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/royalSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_86" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/suffixData/socialSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_87" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/countryReference/descriptor"/>
+    <Mapping cloverField="firstName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/firstName"/>
+    <Mapping cloverField="formattedName_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/formattedName"/>
+    <Mapping cloverField="fullNameForSingaporeAndMalaysia_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/fullNameForSingaporeAndMalaysia"/>
+    <Mapping cloverField="lastName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/lastName"/>
+    <Mapping cloverField="firstName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/firstName"/>
+    <Mapping cloverField="firstName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/firstName2"/>
+    <Mapping cloverField="lastName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/lastName"/>
+    <Mapping cloverField="lastName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/lastName2"/>
+    <Mapping cloverField="localName_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/localName"/>
+    <Mapping cloverField="localScript_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/localScript"/>
+    <Mapping cloverField="middleName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/middleName"/>
+    <Mapping cloverField="middleName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/middleName2"/>
+    <Mapping cloverField="secondaryLastName_2" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/secondaryLastName"/>
+    <Mapping cloverField="secondaryLastName2_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/localNameDetailData/secondaryLastName2"/>
+    <Mapping cloverField="middleName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/middleName"/>
+    <Mapping cloverField="descriptor_88" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/prefixData/salutationReference/descriptor"/>
+    <Mapping cloverField="descriptor_89" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/prefixData/titleReference/descriptor"/>
+    <Mapping cloverField="reportingName_1" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/reportingName"/>
+    <Mapping cloverField="secondaryLastName_3" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/secondaryLastName"/>
+    <Mapping cloverField="descriptor_90" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/academicSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_91" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/hereditarySuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_92" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/honorarySuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_93" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/professionalSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_94" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/religiousSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_95" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/royalSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_96" trim="true" xpath="workerData/personalData/nameData/preferredNameData/nameDetailData/suffixData/socialSuffixReference/descriptor"/>
+    <Mapping cloverField="descriptor_97" trim="true" xpath="workerData/personalData/nationalityReference/descriptor"/>
+    <Mapping cloverField="descriptor_98" trim="true" xpath="workerData/personalData/nativeRegionReference/descriptor"/>
+    <Mapping cloverField="personnelFileAgencyForPerson" trim="true" xpath="workerData/personalData/personnelFileAgencyForPerson"/>
+    <Mapping cloverField="descriptor_99" trim="true" xpath="workerData/personalData/politicalAffiliationReference/descriptor"/>
+    <Mapping cloverField="descriptor_100" trim="true" xpath="workerData/personalData/regionOfBirthReference/descriptor"/>
+    <Mapping cloverField="descriptor_101" trim="true" xpath="workerData/personalData/religionReference/descriptor"/>
+    <Mapping cloverField="tobaccoUse" trim="true" xpath="workerData/personalData/tobaccoUse"/>
+    <Mapping cloverField="filename" trim="true" xpath="workerData/photoData/filename"/>
+    <Mapping cloverField="image" trim="true" xpath="workerData/photoData/image"/>
+    <Mapping cloverField="numberOfPayrollDependents" trim="true" xpath="workerData/relatedPersonData/numberOfPayrollDependents"/>
+    <Mapping cloverField="descriptor_102" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/achievableLevelReference/descriptor"/>
+    <Mapping cloverField="descriptor_103" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/lossImpactRiskReference/descriptor"/>
+    <Mapping cloverField="notes" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/notes"/>
+    <Mapping cloverField="descriptor_104" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/potentialReference/descriptor"/>
+    <Mapping cloverField="descriptor_105" trim="true" xpath="workerData/talentAssessmentData/employeePotentialData/retentionRiskReference/descriptor"/>
+    <Mapping cloverField="descriptor_106" trim="true" xpath="workerData/userAccountData/currencyReference/descriptor"/>
+    <Mapping cloverField="descriptor_107" trim="true" xpath="workerData/userAccountData/defaultDisplayLanguageReference/descriptor"/>
+    <Mapping cloverField="descriptor_108" trim="true" xpath="workerData/userAccountData/localeReference/descriptor"/>
+    <Mapping cloverField="descriptor_109" trim="true" xpath="workerData/userAccountData/timeZoneReference/descriptor"/>
+    <Mapping cloverField="descriptor_110" trim="true" xpath="workerData/userAccountData/userLanguageReference/descriptor"/>
+    <Mapping cloverField="userName" trim="true" xpath="workerData/userAccountData/userName"/>
+    <Mapping cloverField="userID" trim="true" xpath="workerData/userID"/>
+    <Mapping cloverField="workerID" trim="true" xpath="workerData/workerID"/>
+    <Mapping cloverField="descriptor_111" trim="true" xpath="workerReference/descriptor"/>
+    <Mapping cloverField="FirstName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/firstName"/>
+    <Mapping cloverField="LastName" trim="true" xpath="workerData/personalData/nameData/legalNameData/nameDetailData/lastName"/>
+    <Mapping cloverField="Email" trim="true" xpath="workerData/personalData/contactData/emailAddressData/emailAddress"/>
+    <Mapping cloverField="Username" trim="true" xpath="workerData/userID"/>
+    <Mapping cloverField="Terminated" trim="true" xpath="workerData/employmentData/workerStatusData/terminated"/>
+  </Context>
+  <Context outPort="1" sequenceField="__id" xpath="./requestCriteria/transactionLogCriteriaData">
+    <Mapping cloverField="descriptor" trim="true" xpath="subscriberReference/descriptor"/>
+    <Mapping cloverField="effectiveFrom" trim="true" xpath="transactionDateRangeData/effectiveFrom"/>
+    <Mapping cloverField="effectiveThrough" trim="true" xpath="transactionDateRangeData/effectiveThrough"/>
+    <Mapping cloverField="updatedFrom" trim="true" xpath="transactionDateRangeData/updatedFrom"/>
+    <Mapping cloverField="updatedThrough" trim="true" xpath="transactionDateRangeData/updatedThrough"/>
+  </Context>
 </Context>
 ]]></attr>
 <attr name="__typeName"><![CDATA[__default__]]></attr>
@@ -11270,6 +11280,13 @@
 <attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/wd-hr/get-workers]]></attr>
 <attr name="__connectorName"><![CDATA[WorkdayHumanResource]]></attr>
 </Node>
+<Node enabled="enabled" guiName="Foreach 'transactionLogCriteriaData' -&gt; 'user-map'" guiX="460" guiY="120" id="FOREACH_TRANSACTION_LOG_CRITERIA_DATA_USER_MAP" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.LastModifiedDate = input.updatedThrough;]]></attr>
+</Node>
 <Node enabled="enabled" guiName="Foreach 'worker' -&gt; 'user-map'" guiX="460" guiY="120" id="FOREACH_WORKER_USER_MAP" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
 <attr name="melScript"><![CDATA[//MEL
 //START -> DO NOT REMOVE
@@ -11291,6 +11308,20 @@ output.Email = input.Email;
 <Node cacheInMemory="true" enabled="enabled" fileURL="dict:outputPayload" guiName="Map&lt;k,v&gt; WRITER" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
 <attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <clover:collection clover:name="user-map" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="1">
+    <Email>$1.Email</Email>
+    <Username>$1.Username</Username>
+    <FirstName>$1.FirstName</FirstName>
+    <LastName>$1.LastName</LastName>
+    <LanguageLocaleKey>$1.LanguageLocaleKey</LanguageLocaleKey>
+    <LocaleSidKey>$1.LocaleSidKey</LocaleSidKey>
+    <ProfileId>$1.ProfileId</ProfileId>
+    <EmailEncodingKey>$1.EmailEncodingKey</EmailEncodingKey>
+    <TimeZoneSidKey>$1.TimeZoneSidKey</TimeZoneSidKey>
+    <Alias>$1.Alias</Alias>
+    <CommunityNickname>$1.CommunityNickname</CommunityNickname>
+    <LastModifiedDate clover:dataType="java.util.Calendar">$1.LastModifiedDate</LastModifiedDate>
+  </item>
   <item clover:inPort="0">
     <Email>$0.Email</Email>
     <Username>$0.Username</Username>
@@ -11303,11 +11334,14 @@ output.Email = input.Email;
     <TimeZoneSidKey>$0.TimeZoneSidKey</TimeZoneSidKey>
     <Alias>$0.Alias</Alias>
     <CommunityNickname>$0.CommunityNickname</CommunityNickname>
+    <LastModifiedDate clover:dataType="java.util.Calendar">$0.LastModifiedDate</LastModifiedDate>
   </item>
 </clover:collection>]]></attr>
 <attr name="_data_format"><![CDATA[MAP]]></attr>
 </Node>
 <Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="5b093719-c3c6-4e3d-a24d-c7cdeb5d3542" outPort="Port 0 (out)" toNode="FOREACH_WORKER_USER_MAP:0"/>
+<Edge debugMode="true" fromNode="BEAN_READER0:1" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="cab2515b-32f5-40da-9ff4-a794e3a88441" outPort="Port 1 (out)" toNode="FOREACH_TRANSACTION_LOG_CRITERIA_DATA_USER_MAP:0"/>
+<Edge debugMode="true" fromNode="FOREACH_TRANSACTION_LOG_CRITERIA_DATA_USER_MAP:0" guiBendpoints="" id="Edge1" inPort="Port 1 (in)" metadata="5e08d60b-e2ce-48b8-8874-03750b0b4119" outPort="Port 0 (out)" toNode="MAP_WRITER0:1"/>
 <Edge debugMode="true" fromNode="FOREACH_WORKER_USER_MAP:0" guiBendpoints="" id="Edge3" inPort="Port 0 (in)" metadata="5e08d60b-e2ce-48b8-8874-03750b0b4119" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
 </Phase>
 </Graph>

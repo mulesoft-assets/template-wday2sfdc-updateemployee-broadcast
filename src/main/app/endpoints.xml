@@ -7,8 +7,8 @@
       xmlns:spring="http://www.springframework.org/schema/beans"
       version="EE-3.5.2"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="
-http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
@@ -18,13 +18,13 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 
 	<!-- In this file you should declare all your inbound endpoints in order to control the access to your application -->
 
-    <flow name="triggerBroadcastFlow" processingStrategy="synchronous" doc:name="triggerBroadcastFlow">
+    <flow name="triggerBroadcastFlow" processingStrategy="synchronous" >
  		<poll doc:name="fireup Worker synchronization">
  			<fixed-frequency-scheduler frequency="${poll.frequencyMillis}" startDelay="${poll.startDelayMillis}" />
- 			<watermark variable="lastQueryDate" default-expression="${watermark.default.expression}" update-expression="#[ new java.util.Date() ]" />
+ 			<watermark variable="lastQueryDate" default-expression="${watermark.default.expression}" selector="FIRST" selector-expression="#[payload.LastModifiedDate]"/>
 			<processor-chain doc:name="query Workers and set collection">
-				<logger message="Fetching Workday to update... #[lastQueryDate]" level="INFO" doc:name="log 'Fetching workday to update...'"/>
-				<wd-hr:get-workers config-ref="WorkdayHumanResource" doc:name="get Workers from Workday Human Resource" workersRequest-ref="#[org.mule.templates.UpdateEmployeeRequest.create(lastQueryDate, ${poll.frequencyMillis})]"></wd-hr:get-workers>
+				<logger message="Fetching Workday with watermark: #[new java.text.SimpleDateFormat(&quot;yyyy/dd/MM HH:mm:ss.SSS&quot;).format(lastQueryDate.getTime())]" level="INFO" doc:name="log 'Fetching workday with watermark...'"/>
+				<wd-hr:get-workers config-ref="WorkdayHumanResource" doc:name="get Workers from Workday Human Resource" workersRequest-ref="#[org.mule.templates.UpdateEmployeeRequest.create(lastQueryDate)]"></wd-hr:get-workers>
                 <data-mapper:transform config-ref="transform_Workday_workers_for_update" doc:name="transform Workday workers to map of values for update in Salesforce"/>
 			</processor-chain>
 		</poll>

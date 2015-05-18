@@ -26,6 +26,10 @@ public class WorkersDeduplicationFilter
     @SuppressWarnings("unchecked")
     @Override
     public boolean accept(MuleMessage message) {
+    	
+    	// Filters out payload with watermark only
+    	if (((List<Map<String, String>>) message.getPayload()).size() == 1)
+    		return false;
 
         List<Map<String, String>> payload = (List<Map<String, String>>) message.getPayload();
         List<String> emails = new ArrayList<String>();
@@ -36,7 +40,7 @@ public class WorkersDeduplicationFilter
             Map<String, String> next = iterator.next();
             String email = next.get("Email");
 
-            if (emails.contains(email)) {
+            if (emails.contains(email) || next.containsKey("LastModifiedDate")) {
                 iterator.remove();
             } else {
                 emails.add(email);
