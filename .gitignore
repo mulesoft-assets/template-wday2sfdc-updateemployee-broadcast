@@ -2,6 +2,7 @@
 # Java defaults (https://github.com/github/gitignore/blob/master/Java.gitignore) #
 # ------------------------------------------------------------------------------ #
 *.class
+*.iml
 
 # Package Files #
 *.jar
@@ -13,7 +14,6 @@
 # ------------------------------------------------------------------------------------------- #
 *.pydevproject
 .metadata
-.idea/**
 bin/**
 tmp/**
 tmp/**/*
@@ -36,7 +36,7 @@ local.properties
 
 # CDT-specific
 .cproject
-
+target/
 # PDT-specific
 .buildpath
 
@@ -44,7 +44,6 @@ local.properties
 # Studio-specific #
 # --------------- #
 .studio/
-/flows/
 target/
 **/*.mflow
 
@@ -53,13 +52,19 @@ target/
 # --------------- #
 .mule/
 
+# --------------- #
+# Mac-specific #
+# --------------- #
+**/.DS_Store
+
 # --------------------------------------- #
 # Test credentials to be use locally only #
 # --------------------------------------- #
 src/test/resources/mule.test.properties
 
-# --------------------------------------- #
-# Sub products of release plugin          #
-# --------------------------------------- #
-pom.xml.releaseBackup
-release.properties
+# ------------- #
+# Idea specific #
+# ------------- #
+.idea
+**/*.iml
+**/.*.un~

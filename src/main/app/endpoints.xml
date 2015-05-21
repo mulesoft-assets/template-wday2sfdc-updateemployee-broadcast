@@ -21,14 +21,19 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
     <flow name="triggerBroadcastFlow" processingStrategy="synchronous" >
  		<poll doc:name="fireup Worker synchronization">
  			<fixed-frequency-scheduler frequency="${poll.frequencyMillis}" startDelay="${poll.startDelayMillis}" />
- 			<watermark variable="lastQueryDate" default-expression="${watermark.default.expression}" selector="FIRST" selector-expression="#[payload.LastModifiedDate]"/>
+ 			<watermark variable="lastQueryDate" default-expression="${watermark.default.expression}" selector="MAX" selector-expression="#[payload.LastModifiedDate]"/>
 			<processor-chain doc:name="query Workers and set collection">
 				<logger message="Fetching Workday with watermark: #[new java.text.SimpleDateFormat(&quot;yyyy/dd/MM HH:mm:ss.SSS&quot;).format(lastQueryDate.getTime())]" level="INFO" doc:name="log 'Fetching workday with watermark...'"/>
 				<wd-hr:get-workers config-ref="WorkdayHumanResource" doc:name="get Workers from Workday Human Resource" workersRequest-ref="#[org.mule.templates.UpdateEmployeeRequest.create(lastQueryDate)]"></wd-hr:get-workers>
-                <data-mapper:transform config-ref="transform_Workday_workers_for_update" doc:name="transform Workday workers to map of values for update in Salesforce"/>
+                <data-mapper:transform config-ref="transform_Workday_workers_for_update" doc:name="Workday workers to Salesforce users">
+                    <data-mapper:input-arguments>
+                        <data-mapper:input-argument key="UpdatedThrough">#[payload.getRequestCriteria().getTransactionLogCriteriaData()[0].getTransactionDateRangeData().getUpdatedThrough()]</data-mapper:input-argument>
+                    </data-mapper:input-arguments>
+                </data-mapper:transform>
 			</processor-chain>
 		</poll>
-        <custom-filter doc:name="Custom component to filter duplicate workers" class="org.mule.templates.WorkersDeduplicationFilter"/>
+        <expression-filter expression="#[payload.size() &gt; 0]" doc:name="Filter empty result set"/>
+        <custom-transformer class="org.mule.templates.FilterDuplicateUsersTransformer" doc:name="Filter duplicate users"/>
         <flow-ref name="mainFlow" doc:description="mainFlow"  doc:name="mainFlow"/>
     </flow>
 
