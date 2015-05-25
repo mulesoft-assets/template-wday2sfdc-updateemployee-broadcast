@@ -56,7 +56,6 @@ public class BusinessLogicIT extends AbstractTemplateTestCase {
         muleContext.registerListener(pipelineListener);
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public void testMainFlow() throws Exception {
         runSchedulersOnce(POLL_FLOW_NAME);
