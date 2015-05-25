@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:batch="http://www.mulesoft.org/schema/mule/batch"
-	xmlns:json="http://www.mulesoft.org/schema/mule/json"
-	xmlns:wd-hr="http://www.mulesoft.org/schema/mule/wd-hr" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+<mule xmlns:spring="http://www.springframework.org/schema/beans" xmlns:batch="http://www.mulesoft.org/schema/mule/batch"
+	  xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	  xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
       xmlns="http://www.mulesoft.org/schema/mule/core"
       xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-      xmlns:spring="http://www.springframework.org/schema/beans"
-      version="EE-3.5.2"
+      version="EE-3.6.2"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/2.0/mule-tracking-ee.xsd
 http://www.mulesoft.org/schema/mule/sfdc http://www.mulesoft.org/schema/mule/sfdc/current/mule-sfdc.xsd
-http://www.mulesoft.org/schema/mule/wd-hr http://www.mulesoft.org/schema/mule/wd-hr/current/mule-wd-hr.xsd
-http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schema/mule/ee/data-mapper/current/mule-data-mapper.xsd">
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd">
     
 	<batch:job name="syncUserBatch">
 		<batch:threading-profile poolExhaustedAction="WAIT" />
@@ -25,11 +21,11 @@ http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schem
 					doc:name="store result in record var 'userInSalesforce'">
 					<sfdc:query-single config-ref="Salesforce"
 						query="SELECT Id,Alias,Email,EmailEncodingKey,FirstName,LanguageLocaleKey,LastName,LocaleSidKey,ProfileId,TimeZoneSidKey,Title,Username FROM User WHERE Email = '#[payload['Email']]'"
-						doc:name="query User in Salesforce" />
+						doc:name="Query User in Salesforce" />
 				</enricher>
 			</batch:step>
 			<batch:step name="foreachUserInWorkdayUpsertUserInSalesforce" accept-expression="#[recordVars['userInSalesforce'] instanceof NullPayload == false]">
-                <expression-component doc:name="prepare user for Update"><![CDATA[if (recordVars['userInSalesforce'] instanceof NullPayload) {
+                <expression-component doc:name="Prepare user for Update"><![CDATA[if (recordVars['userInSalesforce'] instanceof NullPayload) {
 } else {
 	// Add target system ID as it is an update plus mandatory fields Alias, TimeZoneSidKey, LocaleSidKey, EmailEncodingKey, ProfileId, LanguageLocaleKey
     payload.put('Id', recordVars['userInSalesforce']['Id']);
@@ -43,7 +39,7 @@ http://www.mulesoft.org/schema/mule/ee/data-mapper http://www.mulesoft.org/schem
 }
 payload.remove('LastModifiedDate');]]></expression-component>
 				<batch:commit size="200" doc:name="Batch Commit">
-                    <sfdc:update config-ref="Salesforce" type="User" doc:name="update Users in Salesforce">
+                    <sfdc:update config-ref="Salesforce" type="User" doc:name="Update Users in Salesforce">
                         <sfdc:objects ref="#[payload]"/>
                     </sfdc:update>
                     <logger message="Users update result: #[payload]" level="INFO" doc:name="Logger 'users update result'"/>
@@ -52,14 +48,14 @@ payload.remove('LastModifiedDate');]]></expression-component>
 		</batch:process-records>
 		<batch:on-complete>
 			<json:object-to-json-transformer
-				doc:name="transform BatchJobInstance to JSON" />
-			<logger level="INFO" doc:name="log 'Migration process has finished'"
+				doc:name="Transform BatchJobInstance to JSON" />
+			<logger level="INFO" doc:name="Log 'Migration process has finished'"
 				message="Migration process has finished: #[payload]" />
 		</batch:on-complete>
 	</batch:job>
 
     <flow name="mainFlow" >
-        <batch:execute name="syncUserBatch" doc:name="trigger broadcastLeadBatch"/>
-        <exception-strategy ref="defaultChoiceExceptionStrategy" doc:name="catch Exception and call defaultExceptionStrategy"/>
+        <batch:execute name="syncUserBatch" doc:name="Trigger broadcastLeadBatch"/>
+        <exception-strategy ref="defaultChoiceExceptionStrategy" doc:name="Catch Exception and call defaultExceptionStrategy"/>
     </flow>
 </mule>

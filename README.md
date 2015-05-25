@@ -80,6 +80,10 @@ There are no particular considerations for this Anypoint Template regarding Sale
 There are no particular considerations for this Anypoint Template regarding Workday as data origin.
 
 
+
+
+
+
 # Run it! <a name="runit"/>
 Simple steps to get Workday to Salesforce Update Employee Broadcast running.
 

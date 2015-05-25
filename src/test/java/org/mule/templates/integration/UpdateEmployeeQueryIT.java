@@ -9,6 +9,8 @@ package org.mule.templates.integration;
 import com.workday.hr.GetWorkersResponseType;
 import com.workday.hr.WorkerType;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,8 +20,6 @@ import org.mule.api.MuleException;
 import org.mule.api.MuleMessage;
 import org.mule.api.lifecycle.InitialisationException;
 import org.mule.processor.chain.InterceptingChainLifecycleWrapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -33,7 +33,7 @@ import static org.junit.Assert.assertFalse;
  */
 public class UpdateEmployeeQueryIT extends AbstractTemplateTestCase {
 
-    private static final Logger log = LoggerFactory.getLogger(UpdateEmployeeQueryIT.class);
+    private static final Logger LOG = LogManager.getLogger(UpdateEmployeeQueryIT.class);
 
     private InterceptingChainLifecycleWrapper queryEmployeeFromWorkdayFlow;
 
@@ -89,7 +89,7 @@ public class UpdateEmployeeQueryIT extends AbstractTemplateTestCase {
         if (response.getResponseData() != null) {
             List<WorkerType> workers = response.getResponseData().getWorker();
             assertFalse("The response data should not be empty", workers.isEmpty());
-            log.info("workers.size() = " + workers.size());
+            LOG.info("workers.size() = " + workers.size());
         }
     }
 
