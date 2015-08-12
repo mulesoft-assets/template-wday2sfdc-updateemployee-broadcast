@@ -137,7 +137,7 @@ In order to use this Mule Anypoint Template you need to configure properties (Cr
 ### Application configuration
 + poll.frequencyMillis `60000`
 + poll.startDelayMillis `1000`
-+ watermark.default.expression `YESTERDAY`
++ watermark.default.expression `#[groovy: new GregorianCalendar(2015, Calendar.MAY, 18, 17, 00, 00)]` //(YEAR, MONTH, DAY, HOUR, MINUTE, SECOND)`
 
 #### Workday Connector configuration
 + wday.user `admin@workday`
@@ -148,7 +148,7 @@ In order to use this Mule Anypoint Template you need to configure properties (Cr
 + sfdc.username `user@company.com`
 + sfdc.password `secret`
 + sfdc.securityToken `1234fdkfdkso20kw2sd`
-+ sfdc.url `https://login.salesforce.com/services/Soap/u/28.0`
++ sfdc.url `https://login.salesforce.com/services/Soap/u/32.0`
 
 # API Calls <a name="apicalls"/>
 Salesforce imposes limits on the number of API Calls that can be made. Therefore calculating this amount may be an important factor to consider. The Anypoint Template calls to the API can be calculated using the formula:
