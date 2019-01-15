@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<configuration>
+	<placeholders>
+		<placeholder id="template_name">Workday to Salesforce Update Employee Broadcast</placeholder>
+	</placeholders>
+	<sections>
+		<section id="use_case">
+			<![CDATA[
+This template should serve as a foundation for setting an online sync of Employees updates from Workday to Salesforce Users.
+Every time there is a change in an already existing Employee in Workday, the integration will poll for them in the source instance and it will be responsible for updating the User in Salesforce.
+Requirements have been set not only to be used as examples, but also to establish a starting point to adapt your integration to your requirements.
+As implemented, this template leverages the batch module. The batch job is divided in *Process* and *On Complete* stages.
+The template retrieves all updated Employees since last poll, checks for duplicates and triggers the Batch process. During the *Batch Process* stage, in the first step the different Employees are matched by email with the existing Users in Salesforce. In the second step the users are updated to Salesforce using a Batch Aggregator.
+Finally during the *On Complete* stage the template logs output statistics data into the console.
+]]>
+		</section>
+		<section id="considerations">
+			<![CDATA[
+To make this template run, there are certain preconditions that must be considered. All of them deal with the preparations in both source and destination systems, that must be made in order for all to run smoothly. **Failing to do so could lead to unexpected behavior of the template.**
+1. **Users cannot be deleted in Salesforce:** For now, the only thing to do regarding users removal is disabling/deactivating them, but this won't make the username available for a new user.
+2. **Workday email uniqueness**: The email can be repeated for two or more accounts (or missing). Therefore Workday accounts with duplicate emails will be removed.
+]]>
+		</section>
+		<section id="application_configuration">
+			<![CDATA[
++ page.size `200`
+            
+**Scheduler Configuration**
++ scheduler.frequency `60000`
++ scheduler.start.delay `1000`
++ watermark.default.expression `2016-12-13T03:00:59Z` 
+
+**Workday Connector Configuration**
++ wday.username `admin@workday`
++ wday.password `secret`
++ wday.tenant `tenant`
++ wday.host `impl-cc.workday.com`
+
+**Salesforce Connector Configuration**
++ sfdc.username `user@company.com`
++ sfdc.password `secret`
++ sfdc.securityToken `1234fdkfdkso20kw2sd`
+
++ sfdc.user.profile.id `123456789786kAC`
+
++ user.localeSidKey `en_US`
++ user.languageLocaleKey `en_US`
++ user.timeZoneSidKey `America/New_York`
++ user.emailEncodingKey `ISO-8859-1`
+]]>
+		</section>
+		<section id="api_calls">
+			<![CDATA[
+Salesforce imposes limits on the number of API calls that can be made. Therefore calculating this amount may be an important factor to consider. The template calls to the API can be calculated using the formula:
+
+***1 + X + X / ${page.size}***
+
+***X*** is the number of Users to be synchronized on each run.
+
+Divide by ***${page.size}*** because by default, Users are gathered in groups of ${page.size} for each Upsert API call in the aggregation step. Also consider that these calls are executed repeatedly every polling cycle. 
+
+For instance if 10 records are fetched from origin instance, then 12 API calls will be made (1 + 10 + 1).
+]]>
+		</section>
+		<section id="default_business_logic_xml">
+		<![CDATA[
+Functional aspect of the template is implemented on this XML, directed by a batch job that will be responsible for updates. The several message processors constitute four high level actions that fully implement the logic of this template:
+
+1. Job execution is invoked from schedulerFlow (endpoints.xml) every time there is a new query executed asking for updated Employees.
+2. During the *Process* stage, each Employee will be filtered depending on if it has an existing matching User in the Salesforce.
+3. The last step of the *Process* stage will group the Users and update them in Salesforce. 
+4. Finally during the *On Complete* stage the template logs output statistics data into the console.
+]]>
+		</section>
+	</sections>
+</configuration>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:os="http://www.mulesoft.org/schema/mule/os" xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+    xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd
+http://www.mulesoft.org/schema/mule/os http://www.mulesoft.org/schema/mule/os/current/mule-os.xsd">
+
+    <flow name="businessLogicFlow" doc:id="8759532e-79b7-4789-990c-dc8e162bfd67">
+        <batch:job jobName="migrateEmployeesBatch" doc:id="204892ae-0d97-4326-beae-310c8d52b7a6">
+            <batch:process-records>
+                <batch:step name="foreachEmployeeInWorkdayGetEmployeeInSalesforceStep" doc:id="89713774-362a-4e92-9bdc-41e31802bf38">
+                    <salesforce:query-single doc:name="Query User in Salesforce" doc:id="279bfb09-def1-4d75-a410-a3c4e9517fc6" config-ref="Salesforce_Sfdc_config"
+                        target="fromSalesforce">
+                        <salesforce:salesforce-query>SELECT
+                            Id,Alias,Email,EmailEncodingKey,FirstName,LanguageLocaleKey,LastName,LocaleSidKey,ProfileId,TimeZoneSidKey,Title,Username FROM User WHERE Email =
+                            ':email'
+                        </salesforce:salesforce-query>
+                        <salesforce:parameters><![CDATA[#[output application/java
+---
+{
+	"email" : payload.Email
+}]]]></salesforce:parameters>
+                    </salesforce:query-single>
+                    <ee:transform doc:name="Store results from Salesforce" doc:id="a54be473-4bc2-4a02-8bb0-9faae278a36f">
+                        <ee:message>
+                            <ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+payload ++ {
+	Id: vars.fromSalesforce.Id,
+	Alias: if(vars.fromSalesforce.Alias != null) vars.fromSalesforce.Alias else payload.FirstName[0 to 2] ++ payload.LastName[0 to 2],
+    TimeZoneSidKey: if(vars.fromSalesforce.TimeZoneSidKey != null) vars.fromSalesforce.TimeZoneSidKey else p('user.timeZoneSidKey'),
+    LocaleSidKey: if(vars.fromSalesforce.LocaleSidKey != null) vars.fromSalesforce.LocaleSidKey else p('user.localeSidKey'),
+    EmailEncodingKey: if(vars.fromSalesforce.EmailEncodingKey != null) vars.fromSalesforce.EmailEncodingKey else p('user.emailEncodingKey'),
+    ProfileId: if(vars.fromSalesforce.ProfileId != null) vars.fromSalesforce.ProfileId else p('sfdc.user.profile.id'),
+    LanguageLocaleKey: if(vars.fromSalesforce.LanguageLocaleKey != null) vars.fromSalesforce.LanguageLocaleKey else p('user.languageLocaleKey')
+}]]></ee:set-payload>
+                        </ee:message>
+                    </ee:transform>
+                </batch:step>
+                <batch:step name="foreachEmployeeInWorkdayUpsertEmployeeInSalesforceStep" doc:id="78a74ab4-9b91-416d-985a-acda2ac377eb" acceptExpression="not isEmpty(payload)">
+					<batch:aggregator doc:name="Batch Aggregator" doc:id="1ad86a98-643e-494a-a90a-32daab0b03cc" size="${page.size}">
+						<salesforce:upsert type="User" doc:name="Update employee" doc:id="300e7103-8544-40ab-9968-d9596c40fbe5" config-ref="Salesforce_Sfdc_config" externalIdFieldName="Id"/>
+						<logger level="INFO" doc:name="Log upsert result" doc:id="a58ee027-d43e-432d-812d-4cefd605be6e" message="Users update result: #[output application/json --- payload]"/>
+                </batch:aggregator>
+            </batch:step>
+        </batch:process-records>
+        <batch:on-complete>
+				<ee:transform doc:name="Prepare migration result" doc:id="c84b4bc4-5a65-41c1-9d0c-f1ebd3d8db7a">
+                <ee:message>
+                    <ee:set-payload><![CDATA[%dw 2.0
+output text/plain
+---
+"Migration Report: \n"
+
+++ "\n Time [milliseconds]: " 		++ payload.elapsedTimeInMillis!
+++ "\n Total Records: "				++ payload.totalRecords!
+++ "\n Successful Records: "		++ payload.successfulRecords!
+++ "\n Failed Records: "			++ payload.failedRecords!
+++ "\n Loaded Records: "			++ payload.loadedRecords!
+++ "\n Processed Records: " 		++ payload.processedRecords!]]></ee:set-payload>
+                </ee:message>
+            </ee:transform>
+            <logger level="INFO" doc:name="Migration process has finished!" doc:id="b7575d38-7dbd-4602-9186-1bbb25234896" message="Migration process has finished: #[payload]" />
+        </batch:on-complete>
+    </batch:job>
+</flow>
+</mule>
