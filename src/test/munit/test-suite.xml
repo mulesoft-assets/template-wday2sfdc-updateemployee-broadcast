@@ -64,7 +64,7 @@ output application/java
 if (vars.workerInWday.Get_Workers_Response.Response_Data != null) 
 	(vars.workerInWday.Get_Workers_Response.Response_Data.*Worker map(worker) -> {
 	FirstName: vars.firstName,
-	Email: worker.Worker_Data.Personal_Data.Contact_Data.Email_Address_Data.Email_Address,
+	Email: worker.Worker_Data.Personal_Data.Contact_Data.Email_Address_Data.Email_Address
 }) distinctBy $.Email
 else []]]></ee:set-variable>
 			</ee:variables>
