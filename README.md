@@ -1,12 +1,12 @@
 
-# Anypoint Template: Workday to Salesforce Update Employee Broadcast	
+# Anypoint Template: Workday to Salesforce Update Employee Broadcast
 
 <!-- Header (start) -->
 
 <!-- Header (end) -->
 
 # License Agreement
-This template is subject to the conditions of the <a href="https://s3.amazonaws.com/templates-examples/AnypointTemplateLicense.pdf">MuleSoft License Agreement</a>. Review the terms of the license before downloading and using this template. You can use this template for free with the Mule Enterprise Edition, CloudHub, or as a trial in Anypoint Studio. 
+This template is subject to the conditions of the <a href="https://s3.amazonaws.com/templates-examples/AnypointTemplateLicense.pdf">MuleSoft License Agreement</a>. Review the terms of the license before downloading and using this template. You can use this template for free with the Mule Enterprise Edition, CloudHub, or as a trial in Anypoint Studio.
 # Use Case
 <!-- Use Case (start) -->
 This template should serve as a foundation for setting an online sync of Employees updates from Workday to Salesforce Users.
@@ -99,7 +99,7 @@ After you import your template into Anypoint Studio, follow these steps to run i
 <!-- Running on Studio (end) -->
 
 ### Running on Mule Standalone
-Update the properties in one of the property files, for example in mule.prod.properties, and run your app with a corresponding environment variable. In this example, use `mule.env=prod`. 
+Update the properties in one of the property files, for example in mule.prod.properties, and run your app with a corresponding environment variable. In this example, use `mule.env=prod`.
 
 
 ## Running on CloudHub
@@ -119,17 +119,18 @@ To use this template, configure properties such as credentials, configurations, 
 ### Application Configuration
 <!-- Application Configuration (start) -->
 + page.size `200`
-            
+
 **Scheduler Configuration**
 + scheduler.frequency `60000`
 + scheduler.start.delay `1000`
-+ watermark.default.expression `2016-12-13T03:00:59Z` 
++ watermark.default.expression `2016-12-13T03:00:59Z`
 
 **Workday Connector Configuration**
 + wday.username `admin@workday`
 + wday.password `secret`
 + wday.tenant `tenant`
 + wday.host `impl-cc.workday.com`
++ wday.responseTimeout `Workday_User.response_timeout`
 
 **Salesforce Connector Configuration**
 + sfdc.username `user@company.com`
@@ -152,7 +153,7 @@ Salesforce imposes limits on the number of API calls that can be made. Therefore
 
 ***X*** is the number of Users to be synchronized on each run.
 
-Divide by ***${page.size}*** because by default, Users are gathered in groups of ${page.size} for each Upsert API call in the aggregation step. Also consider that these calls are executed repeatedly every polling cycle. 
+Divide by ***${page.size}*** because by default, Users are gathered in groups of ${page.size} for each Upsert API call in the aggregation step. Also consider that these calls are executed repeatedly every polling cycle.
 
 For instance if 10 records are fetched from origin instance, then 12 API calls will be made (1 + 10 + 1).
 <!-- API Calls (end) -->
@@ -181,7 +182,7 @@ Functional aspect of the template is implemented on this XML, directed by a batc
 
 1. Job execution is invoked from schedulerFlow (endpoints.xml) every time there is a new query executed asking for updated Employees.
 2. During the *Process* stage, each Employee will be filtered depending on if it has an existing matching User in the Salesforce.
-3. The last step of the *Process* stage will group the Users and update them in Salesforce. 
+3. The last step of the *Process* stage will group the Users and update them in Salesforce.
 4. Finally during the *On Complete* stage the template logs output statistics data into the console.<!-- Default Business Logic XML (end) -->
 
 <!-- Business Logic XML (start) -->
